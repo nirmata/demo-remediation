@@ -55,5 +55,5 @@ jobs:
           echo "nctl Scan completed"
           #./nctl scan terraform -p policies/instance -r instance.plan --details  --publish --audit-as-warn
           echo "Instance Scan completed"
-          #./nctl scan terraform -p policies/sg -r sg.plan --details  --publish --audit-as-warn
+          #./nctl scan terraform -p policies/sg -r sg.plan --details  --publish --audit-as-warn -o yaml
           echo "SG Scan completed"
