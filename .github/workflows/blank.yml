@@ -1,0 +1,55 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+env:
+  NIRMATA_TOKEN: ${{ secrets.NIRMATA_TOKEN }}
+  NIRMATA_URL: ${{ secrets.NIRMATA_URL }}
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: |
+          echo "Downloading and Installing NCTL 4.1.0"
+          wget https://nirmata-downloads.s3.us-east-2.amazonaws.com/nctl/nctl_4.3.1-rc.2/nctl_4.3.1-rc.2_linux_amd64.zip
+          unzip -o *.zip
+          chmod 755 ./nctl
+
+      - name: Check nctl version
+        run: |
+          ./nctl version
+
+      - name: nctl login
+        run: ./nctl login --url $NIRMATA_URL --userid anusha.hegde@nirmata.com --token $NIRMATA_TOKEN
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          ./nctl scan kubernetes -p policy/policy.yaml -r resources/pod.yaml --details --audit-as-warn
+          echo "DB Scan completed"
+          #./nctl scan terraform -p policies/instance -r instance.plan --details  --publish --audit-as-warn
+          echo "Instance Scan completed"
+          #./nctl scan terraform -p policies/sg -r sg.plan --details  --publish --audit-as-warn
+          echo "SG Scan completed"
