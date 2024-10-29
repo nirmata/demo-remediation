@@ -47,8 +47,10 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          ./nctl scan kubernetes -p policy/policy.yaml -r resources/pod.yaml --details --audit-as-warn
-          echo "DB Scan completed"
+          ./nctl scan kubernetes -p policy-scan/policy.yaml -r resources/pod.yaml --details --audit-as-warn
+          echo "nctl Scan completed"
+          ./nctl scan kubernetes -p policy-remediate/policy.yaml -r resources/pod.yaml --details --audit-as-warn
+          echo "Remediation completed"
           #./nctl scan terraform -p policies/instance -r instance.plan --details  --publish --audit-as-warn
           echo "Instance Scan completed"
           #./nctl scan terraform -p policies/sg -r sg.plan --details  --publish --audit-as-warn
