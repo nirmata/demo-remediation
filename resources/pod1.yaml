@@ -1,15 +1,25 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    run: nginx
-  name: pod1
+    app: hamster
+  name: deploy
+  namespace: test
 spec:
-  containers:
-  - image: ghcr.io/nginx
-    name: pod1
-    resources: {}
-  dnsPolicy: ClusterFirst
-  restartPolicy: Always
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hamster
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: hamster
+    spec:
+      containers:
+      - image: nginx
+        name: deploy
+        resources: {}
 status: {}
