@@ -49,7 +49,7 @@ jobs:
         run: |
           ./nctl scan kubernetes -p policy-scan/policy.yaml -r resources/pod.yaml --details --audit-as-warn
           echo "nctl Scan completed"
-          ./nctl scan kubernetes -p policy-remediate/policy.yaml -r resources/pod.yaml --details --audit-as-warn
+          ./nctl remediate -r resources/pod.yaml  -p policy-scan/policy.yaml -m policy-remediate/policy.yaml
           echo "Remediation completed"
           #./nctl scan terraform -p policies/instance -r instance.plan --details  --publish --audit-as-warn
           echo "Instance Scan completed"
