@@ -47,7 +47,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run nctl remediate
         run: |
-          nctl remediate -r resources/pod.yaml -p https://github.com/nirmata/kyverno-policies/blob/main/pod-security/restricted/disallow-capabilities-strict/disallow-capabilities-strict.yaml
+          ./nctl remediate -r resources/pod.yaml -p https://github.com/nirmata/kyverno-policies/blob/main/pod-security/restricted/disallow-capabilities-strict/disallow-capabilities-strict.yaml
           echo "Remediation completed"
       - name: Run nctl scan
         run: |
