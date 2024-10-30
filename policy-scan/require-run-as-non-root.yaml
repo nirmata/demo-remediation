@@ -26,8 +26,7 @@ spec:
               kinds:
                 - Pod
       validate:
-        message: >-
-          "Running the container as root user is not allowed.Currently the label present are={{request.object.metadata.labels || `[]`}}, with the container image is= {{request.object.spec.containers[*].image || `[]`}} "
+        message: "Running the container as root user is not allowed.Currently the label present are={{request.object.metadata.labels || `[]`}}, with the container image is= {{request.object.spec.containers[*].image || `[]`}} "
         pattern:
           spec:
             =(securityContext):
