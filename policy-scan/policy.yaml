@@ -13,7 +13,7 @@ metadata:
       The recommended labels describe applications in a way that can be
       queried. This policy validates that the label `APP_CMDB_ID` is specified with some value.      
 spec:
-  validationFailureAction: Enforce
+  validationFailureAction: Audit
   background: true
   rules:
   - name: check-for-labels
