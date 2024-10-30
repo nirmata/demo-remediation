@@ -6,6 +6,8 @@ metadata:
     run: nginx
   name: nginx
 spec:
+  securityContext:
+    runAsUser: 0
   containers:
   - image: ghcr.io/nginx
     name: nginx
