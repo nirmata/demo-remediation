@@ -1,1 +1,1 @@
-# nctl-remediation-demo
+# nctl-scan and remediation-demo
