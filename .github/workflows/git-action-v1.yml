@@ -53,6 +53,10 @@ jobs:
         run: |
           ./nctl scan kubernetes -p policy-scan -r resources/pod.yaml --details --audit-as-warn
           echo "nctl Scan completed"
+      - name: Run nctl remediate
+        run: |
+          ./nctl remediate -r resources -p https://github.com/nirmata/kyverno-policies/blob/main/pod-security/restricted/disallow-capabilities-strict/disallow-capabilities-strict.yaml
+          echo "Remediation completed"
           #./nctl scan terraform -p policies/instance -r instance.plan --details  --publish --audit-as-warn
           echo "Instance Scan completed"
           #./nctl scan terraform -p policies/sg -r sg.plan --details  --publish --audit-as-warn -o yaml
