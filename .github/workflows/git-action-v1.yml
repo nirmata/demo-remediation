@@ -42,7 +42,7 @@ jobs:
           ./nctl version
           
       - name: nctl login
-        run: nctl login nch --url $NIRMATA_URL --userid anusha.hegde@nirmata.com --token $NIRMATA_TOKEN
+        run: ./nctl login nch --url $NIRMATA_URL --userid anusha.hegde@nirmata.com --token $NIRMATA_TOKEN
 
      # - name: nctl login
      #   run: ./nctl login --url $NIRMATA_URL --userid anusha.hegde@nirmata.com --token $NIRMATA_TOKEN
