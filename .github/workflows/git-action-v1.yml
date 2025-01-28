@@ -40,6 +40,9 @@ jobs:
       - name: Check nctl version
         run: |
           ./nctl version
+          
+      - name: nctl login
+        run: nctl login nch --url $NIRMATA_URL --userid anusha.hegde@nirmata.com --token $NIRMATA_TOKEN
 
      # - name: nctl login
      #   run: ./nctl login --url $NIRMATA_URL --userid anusha.hegde@nirmata.com --token $NIRMATA_TOKEN
@@ -55,7 +58,7 @@ jobs:
           echo "nctl Scan completed"
       - name: Run nctl remediate
         run: |
-          ./nctl remediate -r resources -p https://github.com/nirmata/kyverno-policies/blob/main/pod-security/restricted/disallow-capabilities-strict/disallow-capabilities-strict.yaml
+          ./nctl remediate -r resources -p https://github.com/nirmata/kyverno-policies/blob/main/pod-security/restricted/disallow-capabilities-strict/disallow-capabilities-strict.yaml --details --publish
           echo "Remediation completed"
           #./nctl scan terraform -p policies/instance -r instance.plan --details  --publish --audit-as-warn
           echo "Instance Scan completed"
