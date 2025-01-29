@@ -52,7 +52,7 @@ jobs:
           
       - name: Run mutate policy 
         run: |
-          nctl remediate -r cluster-resource -p https://github.com/nirmata/demo-remediation/blob/main/policy-scan/policy.yaml -m https://github.com/nirmata/demo-remediation/blob/main/policy-remediate/policy.yaml 
+          nctl remediate -r cluster-resource -p policy-scan/policy.yaml -m policy-remediate/policy.yaml 
           echo "Mutation completed"
           
       - name: Run Remediation
