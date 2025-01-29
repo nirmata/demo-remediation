@@ -50,8 +50,10 @@ jobs:
           nctl scan kubernetes -p policy-scan -r resources/ --details --audit-as-warn --publish
           echo "nctl Scan completed"
           
-      - name: Run remediation
+      - name: Run mutate policy 
         run: |
-          # nctl remediate -r resources -p https://github.com/nirmata/kyverno-policies/blob/main/pod-security/restricted/disallow-capabilities-strict/disallow-capabilities-strict.yaml -m https://github.com/nirmata/kyverno-policies/blob/main/pod-security/restricted/disallow-capabilities-strict/remediate-disallow-capabilities-strict.yaml 
-          echo "Remediation completed"
+          nctl remediate -r cluster-resource -p https://github.com/nirmata/demo-remediation/blob/main/policy-scan/policy.yaml -m https://github.com/nirmata/demo-remediation/blob/main/policy-remediate/policy.yaml 
+          echo "Mutation completed"
+      - name: Run Remediation
           nctl remediate -r resources -p https://github.com/nirmata/kyverno-policies/blob/main/pod-security/restricted/disallow-capabilities-strict/disallow-capabilities-strict.yaml
+          echo "Remediation completed"
