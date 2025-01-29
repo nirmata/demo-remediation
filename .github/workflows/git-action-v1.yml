@@ -44,14 +44,14 @@ jobs:
       - name: nctl login
         run: nctl login nch --url $NIRMATA_URL --userid dolis@nirmata.com --token $NIRMATA_TOKEN
         
-
       # Runs a set of commands using the runner's shell
       - name: Run scan
         run: |
           nctl scan kubernetes -p policy-scan -r resources/ --details --audit-as-warn --publish
           echo "nctl Scan completed"
+          
       - name: Run remediation
         run: |
-          nctl remediate -r resources -p https://github.com/nirmata/kyverno-policies/blob/main/pod-security/restricted/disallow-capabilities-strict/disallow-capabilities-strict.yaml -m https://github.com/nirmata/kyverno-policies/blob/main/pod-security/restricted/disallow-capabilities-strict/remediate-disallow-capabilities-strict.yaml 
+          # nctl remediate -r resources -p https://github.com/nirmata/kyverno-policies/blob/main/pod-security/restricted/disallow-capabilities-strict/disallow-capabilities-strict.yaml -m https://github.com/nirmata/kyverno-policies/blob/main/pod-security/restricted/disallow-capabilities-strict/remediate-disallow-capabilities-strict.yaml 
           echo "Remediation completed"
           nctl remediate -r resources -p https://github.com/nirmata/kyverno-policies/blob/main/pod-security/restricted/disallow-capabilities-strict/disallow-capabilities-strict.yaml
