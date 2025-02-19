@@ -1,2 +1,2 @@
 ## nctl mutate and remediation-demo
-this is a commit.
+this is a commit
