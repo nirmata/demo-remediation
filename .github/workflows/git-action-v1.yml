@@ -41,8 +41,8 @@ jobs:
         run: |
           nctl version
           
-      - name: nctl login
-        run: nctl login nch --url $NIRMATA_URL --userid anudeep.nalla@nirmata.com --token $NIRMATA_TOKEN
+     # - name: nctl login
+     #   run: nctl login nch --url $NIRMATA_URL --userid anudeep.nalla@nirmata.com --token $NIRMATA_TOKEN
         
       # Runs a set of commands using the runner's shell
       - name: Run scan
