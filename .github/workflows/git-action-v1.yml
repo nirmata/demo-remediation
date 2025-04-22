@@ -48,6 +48,7 @@ jobs:
       - name: Run scan
         run: |
           nctl scan kubernetes -p policy-scan -r cluster-resource --details --audit-as-warn --publish
+          nctl scan repository https://github.com/nirmata/demo-remediation/resources --policy-sets pss-baseline,pss-restricted
           echo "nctl Scan completed"
           
       - name: Run mutate policy 
