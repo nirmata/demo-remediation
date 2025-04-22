@@ -44,8 +44,8 @@ jobs:
       - name: nctl login
         run: nctl login nch --url $NIRMATA_URL --userid dolis@nirmata.com --token $NIRMATA_TOKEN
 
-      - name: nctl gitlogin
-        run: nctl login git --provider github --username dolisss --token $GIT_TOKEN
+    #  - name: nctl gitlogin
+    #    run: nctl login git --provider github --username dolisss --token $GIT_TOKEN
         
       # Runs a set of commands using the runner's shell
       - name: Run scan
