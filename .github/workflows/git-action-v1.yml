@@ -43,12 +43,17 @@ jobs:
           
       - name: nctl login
         run: nctl login nch --url $NIRMATA_URL --userid dolis@nirmata.com --token $NIRMATA_TOKEN
+
+      - name: nctl gitlogin
+        run: nctl login git --provider github --username dolisss --token $GIT_TOKEN
         
       # Runs a set of commands using the runner's shell
       - name: Run scan
         run: |
           nctl scan kubernetes -p policy-scan -r cluster-resource --details --audit-as-warn --publish
-          nctl scan repository https://github.com/nirmata/demo-remediation/resources --policy-sets pss-baseline,pss-restricted
+      - name: Run repo scan
+        run: |
+          nctl scan repository https://github.com/nirmata/demo-remediation/resources --policy-sets pss-baseline,pss-restricted --publish
           echo "nctl Scan completed"
           
       - name: Run mutate policy 
