@@ -1,0 +1,36 @@
+apiVersion: kyverno.io/v2beta1
+kind: PolicyException
+metadata:
+  labels:
+    cleanup.kyverno.io/ttl: 2025-05-13T014239Z
+  name: policy-exc-req-v2154y2759w-0
+  namespace: kyverno
+spec:
+  exceptions:
+  - policyName: require-run-as-nonroot
+    ruleNames:
+    - run-as-non-root
+    - autogen-run-as-non-root
+  match:
+    any:
+    - resources:
+        kinds:
+        - Deployment
+        names:
+        - nginx
+        namespaces:
+        - nginx
+    - resources:
+        kinds:
+        - Pod
+        names:
+        - nginx-bd5658cf5-4wxlg
+        namespaces:
+        - nginx
+    - resources:
+        kinds:
+        - ReplicaSet
+        names:
+        - nginx-bd5658cf5
+        namespaces:
+        - nginx
