@@ -50,6 +50,7 @@ jobs:
       # Runs a set of commands using the runner's shell
       - name: Run scan
         run: |
+          cat /home/runner/.nirmata/config
           nctl scan kubernetes -p policy-scan -r cluster-resource --details --audit-as-warn --publish
       # - name: Run repo scan
       #  run: |
