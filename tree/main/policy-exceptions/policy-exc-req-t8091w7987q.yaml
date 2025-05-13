@@ -1,0 +1,36 @@
+apiVersion: kyverno.io/v2beta1
+kind: PolicyException
+metadata:
+  labels:
+    cleanup.kyverno.io/ttl: 2025-05-20T183442Z
+  name: policy-exc-req-t8091w7987q-0
+  namespace: kyverno
+spec:
+  exceptions:
+  - policyName: require-pod-antiaffinity
+    ruleNames:
+    - require-either-hard-or-soft-antiaffinity
+    - autogen-require-either-hard-or-soft-antiaffinity
+  match:
+    any:
+    - resources:
+        kinds:
+        - ReplicaSet
+        names:
+        - nginx-bd5658cf5
+        namespaces:
+        - nginx
+    - resources:
+        kinds:
+        - Pod
+        names:
+        - nginx-bd5658cf5-4wxlg
+        namespaces:
+        - nginx
+    - resources:
+        kinds:
+        - Deployment
+        names:
+        - nginx
+        namespaces:
+        - nginx
